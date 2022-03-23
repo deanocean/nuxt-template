@@ -4,17 +4,34 @@ export default {
   head: {
     title: 'nuxt-template',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ja'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
+      { 'http-equiv': 'X-UA-Compatible', content: 'ie=edge' },
+
+      { hid: 'description', name: 'description', content: 'サイトの説明' },
+      { hid: 'keywords', name: 'keywords', content: 'キーワード1,キーワード2,キーワード3' },
+
+      { hid: 'og:site_name', property: 'og:site_name', content: 'サイト名' },
+      { hid: 'og:type', property: 'og:type', content: 'サイトのタイプ' },
+      { hid: 'og:url', property: 'og:url', content: 'サイトURL' },
+      { hid: 'og:title', property: 'og:title', content: 'サイトタイトル' },
+      { hid: 'og:description', property: 'og:description', content: 'サイトの説明' },
+      { hid: 'og:image', property: 'og:image', content: 'サイトURL' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    script: [
+      {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js',
+        defer: true,
+        // body: true
+      }
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -51,6 +68,11 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    // publicPath: 'assets/',
+    // filenames: {
+    //   app: ({ isDev, isModern }) => isDev ? `[name]${isModern ? '.modern' : ''}.js` : `js/[contenthash:7]${isModern ? '.modern' : ''}.js`,
+    //   chunk: ({ isDev, isModern }) => isDev ? `[name]${isModern ? '.modern' : ''}.js` : `js/[contenthash:7]${isModern ? '.modern' : ''}.js`,
+    // }
   },
 
   optimizedImages: {
