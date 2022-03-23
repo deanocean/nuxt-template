@@ -24,6 +24,8 @@
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-pngquant": "^9.0.2",
     "imagemin-svgo": "^9.0.0",
-    "postcss": "^8.4.4"
+    "postcss": "^8.4.4",
+    "sass": "^1.49.9",
+    "sass-loader": "^10.2.1"
   }
 }
