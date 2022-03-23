@@ -1,0 +1,267 @@
+// btn-theme-generator
+@mixin btn-theme-generator($name, $main-color, $arrow-color: #fff, $text-color: #fff){
+  &--#{$name} {
+    background-color: $main-color;
+    color: $text-color;
+    border-color: $main-color;
+
+    &::after {
+      border-color: $arrow-color;
+      color: $arrow-color;
+    }
+
+    // &.c-btn--arrow {
+    //   border-color: $arrow-color;
+    //   color: $arrow-color;
+    // }
+
+    svg,
+    .c-btn_icon {
+      fill: $arrow-color;
+      stroke: $arrow-color;
+    }
+
+    &.c-btn--hoverOpa {
+      &:hover {
+        @include pc {
+          color: $text-color;
+          opacity: .85;
+        }
+      }
+    }
+      
+    &.c-btn--hoverRe {
+      &:hover {
+        @include pc {
+          color: $main-color;
+          background-color: $text-color;
+          
+          &::after {
+            border-left-color: $main-color;
+            color: $main-color;
+          }
+
+          svg,
+          .c-btn_icon {
+            fill: $main-color;
+            stroke: $main-color;
+          }
+        }
+      }
+    }
+    
+    &.c-btn--hoverLighten {
+      &:hover {
+        @include pc {
+          color: $text-color;
+          background-color: lighten($main-color, 4%);
+          border-color: lighten($main-color, 4%);
+        }
+      }
+    }
+    
+    &.c-btn--hoverDarken {
+      &:hover {
+        @include pc {
+          color: $text-color;
+          background-color: darken($main-color, 5%);
+          border-color: darken($main-color, 5%);
+        }
+      }
+    }
+  }
+
+  &--#{$name}Outline {
+    background-color: $text-color;
+    color: $main-color;
+    border-color: $main-color;
+
+    svg,
+    .c-btn_icon {
+      fill: $main-color;
+      stroke: $main-color;
+    }
+
+    &.c-btn--hoverOpa {
+      &:hover {
+        @include pc {
+          color: $main-color;
+          opacity: .85;
+        }
+      }
+    }
+    
+    &.c-btn--hoverRe {
+      &:hover {
+        @include pc {
+          color: $text-color;
+          background-color: $main-color;
+  
+          &::after {
+            border-color: $arrow-color;
+            color: $arrow-color;
+          }
+          
+          svg,
+          .c-btn_icon {
+            fill: $arrow-color;
+            stroke: $arrow-color;
+          }
+        }
+      }
+    }
+    
+    &.c-btn--hoverLighten {
+      &:hover {
+        @include pc {
+          color: lighten($main-color, 4%);
+          border-color: lighten($main-color, 4%);
+        }
+      }
+    }
+
+    &.c-btn--hoverDarken {
+      &:hover {
+        @include pc {
+          color: darken($main-color, 4%);
+          border-color: darken($main-color, 4%);
+        }
+      }
+    }
+  }
+}
+// btn-theme-generator
+
+.c-btn {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  height: 4rem;
+  padding: 0 4rem;
+  border: 2px solid transparent;
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #ccc;
+  transition: all .3s;
+  
+  @include btn-theme-generator(primary, $color-primary);
+  @include btn-theme-generator(secondary, $color-secondary, #1d80d4, #1d80d4);
+
+  &--rounded {
+    border-radius: 4rem;
+  }
+
+  &--arrow {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 10%;
+      width: 1rem;
+      height: 1rem;
+      border-color: #000;
+      border-width: 1px;
+      border-right: solid;
+      border-bottom: solid;
+    }
+
+    &Line {
+      @extend .c-btn--arrow;
+
+      &Up {
+        @extend .c-btn--arrowLine;
+        &::after {
+          transform: translateY(-30%) rotate(-135deg);
+        }
+      }
+  
+      &Right {
+        @extend .c-btn--arrowLine;
+        &::after {
+          transform: translateY(-50%) rotate(-45deg);
+        }
+      }
+  
+      &Down {
+        @extend .c-btn--arrowLine;
+        &::after {
+          transform: translateY(-70%) rotate(45deg);
+        }
+      }
+  
+      &Left {
+        @extend .c-btn--arrowLine;
+        &::after {
+          right: unset;
+          left: 10%;
+          transform: translateY(-50%) rotate(135deg);
+        }
+      } 
+    }
+
+    &Solid {
+      @extend .c-btn--arrow;
+      &::after {
+        width: 0;
+        height: 0;
+        border-left: .6em solid;
+        border-top: .32em solid transparent;
+        border-bottom: .32em solid transparent;
+        border-right: none;
+      }
+
+      &Up {
+        @extend .c-btn--arrowSolid;
+        &::after {
+          transform: translateY(-50%) rotate(-90deg);
+        }
+      }
+  
+      &Right {
+        @extend .c-btn--arrowSolid;
+        &::after {
+          transform: translateY(-50%) rotate(0deg);
+        }
+      }
+  
+      &Down {
+        @extend .c-btn--arrowSolid;
+        &::after {
+          transform: translateY(-50%) rotate(90deg);
+        }
+      }
+  
+      &Left {
+        @extend .c-btn--arrowSolid;
+        &::after {
+          right: unset;
+          left: 10%;
+          transform: translateY(-50%) rotate(180deg);
+        }
+      } 
+    }
+  }
+
+  &--icon {
+    svg,
+    .c-btn_icon {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: .5em;
+      width: 18px;
+      height: 22px;
+      transition: all .3s;
+    }
+
+    i {
+      margin-right: .5em;
+      font-size: inherit;
+    }
+  }
+}
+
+

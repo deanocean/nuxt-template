@@ -1,0 +1,113 @@
+@use 'sass:math';
+
+@mixin pc($width: 768px) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin tab {
+  @media screen and (min-width: 768px) and (max-width: 900px) {
+    @content;
+  }
+}
+
+@mixin sp($width: 767px) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
+
+/* ---------- rwd ---------- */
+@mixin rwd-fz($size, $magnification: 0.5) {
+
+  $size: $size * 0.1;
+
+  font-size: #{$size}rem;
+
+  @include sp {
+    font-size: #{$size * $magnification}rem;
+  }
+}
+
+
+/* ---------- shortcut ---------- */
+@mixin bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+@mixin pos-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin pos-full {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin hover-opacity ($anime: $anime) {
+  opacity: 1;
+  transition: opacity #{$anime};
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+@mixin hover-opacity-pseudo($anime: .3s) {
+  position: relative;
+  
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity #{$anime}; 
+  }
+  
+  &:hover {
+    &::after {
+      opacity: 0.3;
+    }
+  }
+}
+
+@mixin hover-underline {
+  display: inline-block;
+  background-size: 0 1px;
+  background-position: 0 100%;
+  background-image: linear-gradient(#000, #000);
+  background-repeat: no-repeat;
+  @include hover;
+
+  &:hover {
+    background-size: 100% 1px;
+  }
+}
+
+@mixin color-gradient($dir, $color1, $color2) {
+  width: fit-content;
+  background: $linear-gradient(to #{$dir}, #{$color1}, #{$color2});
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

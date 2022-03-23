@@ -1,0 +1,47 @@
+@use 'sass:math';
+
+$properties: (
+  "mt": margin-top,
+  "mb": margin-bottom,
+  "ml": margin-left,
+  "mr": margin-right,
+  "pt": padding-top,
+  "pb": padding-bottom,
+  "pl": padding-left,
+  "pr": padding-right,
+);
+
+$spacing-rem: (
+  10: 1.0rem,
+  20: 2.0rem,
+  30: 3.0rem,
+  40: 4.0rem,
+  50: 5.0rem,
+  60: 6.0rem,
+  70: 7.0rem,
+  80: 8.0rem,
+  90: 9.0rem,
+  100: 10.0rem,
+);
+
+// Half value while using mobile
+// @each $property, $property-value in $properties {
+// 	@for $i from 0 through 10 {
+// 		.u-#{$property}-#{$i*10} {
+// 			#{$property-value}: #{$i}rem !important;
+
+// 			@include sp {
+// 				#{$property-value}: #{math.div($i, 2)}rem !important;
+// 			}
+// 		}
+// 	}
+// }
+
+// Use RFS
+@each $property, $property-value in $properties {
+  @each $spacing, $spacing-value in $spacing-rem {
+    .u-#{$property}-#{$spacing} {
+      @include rfs($spacing-value, $property-value);
+    }
+  }
+}

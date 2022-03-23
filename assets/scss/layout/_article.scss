@@ -1,0 +1,134 @@
+.l-article {
+
+  &_date {
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  &_mainImg {
+    width: 80%;
+    margin: 6rem auto;
+    display: block;
+
+    @include sp {
+      width: 100%;
+      margin: 3rem auto;
+    }
+  }
+
+  &_cont {
+    margin-top: 6rem;
+
+    @include sp {
+      margin-top: 3rem;
+    }
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    line-height: 1.5;
+    padding-bottom: .5em;
+    margin-bottom: 1em;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: .5em;
+    font-weight: bold;
+
+    &::before {
+      content: "";
+      border-left: 14px solid blue;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      display: inline-block;
+      margin-right: 8px;
+    }
+  }
+
+  p {
+    margin-bottom: 1em;
+    overflow: auto;
+
+    img {
+      margin-left: auto;
+      margin-right: auto;
+  
+      @include pc {
+        display: inline-block;
+      }
+  
+      &.alignright {
+        @include pc {
+          float: right;
+        }
+      }
+  
+      &.alignleft {
+        @include pc {
+          float: left;
+        }
+      }
+  
+      &.aligncenter {
+        @include pc {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+  
+      &:not(:only-child){
+        @include pc {
+          max-width: 50%;
+        }
+      }
+  
+      @include sp {
+        + img {
+          margin-top: 2rem;
+        }
+      }
+    }
+  }
+
+  ol {
+    counter-reset: ol-counter;
+    margin-bottom: 1.5em;
+
+    li {
+      counter-increment: ol-counter;
+      padding-left: 2em;
+      text-indent: -1em;
+
+      &::before {
+        display: inline-block;
+        content: counter(ol-counter) " ー";
+      }
+    }
+  }
+
+  ul {
+    background-color: gray;
+    width: fit-content;
+    padding: 1em 2em 1em 1em;
+    margin-bottom: 1.5em;
+
+    li {
+      padding-left: 1em;
+      text-indent: -1.2em;
+      
+      &::before {
+        content: "ー";
+        margin-right: 0.2em;
+      }
+    }
+  }
+
+  a {
+    text-decoration: underline;
+    display: inline-block;
+  }
+}
