@@ -1,4 +1,5 @@
 export default {
+  target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt-template',
@@ -31,6 +32,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@aceforth/nuxt-optimized-images',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -47,6 +49,11 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  optimizedImages: {
+    optimizeImages: true,
+    optimizeImagesInDev: true,
   },
 
   storybook: {
