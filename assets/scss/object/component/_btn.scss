@@ -141,8 +141,8 @@
   vertical-align: middle;
   height: 4rem;
   padding: 0 4rem;
-  border: 2px solid transparent;
   font-size: 1.6rem;
+  border: 2px solid transparent;
   font-weight: bold;
   cursor: pointer;
   background-color: #ccc;
@@ -150,6 +150,24 @@
   
   @include btn-theme-generator(primary, $color-primary);
   @include btn-theme-generator(secondary, $color-secondary, #1d80d4, #1d80d4);
+
+  &--sm {
+    height: 3rem;
+    padding: 0 2rem;
+    font-size: 1.4rem;
+  }
+
+  &--md {
+    height: 4rem;
+    padding: 0 4rem;
+    font-size: 1.6rem;
+  }
+
+  &--lg {
+    height: 6rem;
+    padding: 0 6rem;
+    font-size: 2rem;
+  }
 
   &--rounded {
     border-radius: 4rem;
@@ -163,10 +181,8 @@
       right: 10%;
       width: 1rem;
       height: 1rem;
-      border-color: #000;
-      border-width: 1px;
-      border-right: solid;
-      border-bottom: solid;
+      border-right: 2px solid;
+      border-bottom: 2px solid;
     }
 
     &Line {
@@ -247,14 +263,19 @@
   }
 
   &--icon {
-    svg,
     .c-btn_icon {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       vertical-align: middle;
       margin-right: .5em;
       width: 18px;
       height: 22px;
       transition: all .3s;
+
+      svg {
+        width: 100%;
+      }
     }
 
     i {
