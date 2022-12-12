@@ -15,15 +15,16 @@ export default {
       { hid: 'description', name: 'description', content: 'サイトの説明' },
       { hid: 'keywords', name: 'keywords', content: 'キーワード1,キーワード2,キーワード3' },
 
+      { hid: 'og:title', property: 'og:title', content: 'サイトタイトル' },
       { hid: 'og:site_name', property: 'og:site_name', content: 'サイト名' },
+      { hid: 'og:description', property: 'og:description', content: 'サイトの説明' },
       { hid: 'og:type', property: 'og:type', content: 'サイトのタイプ' },
       { hid: 'og:url', property: 'og:url', content: 'サイトURL' },
-      { hid: 'og:title', property: 'og:title', content: 'サイトタイトル' },
-      { hid: 'og:description', property: 'og:description', content: 'サイトの説明' },
       { hid: 'og:image', property: 'og:image', content: 'サイトURL' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'canonical', href: 'サイトURL' },
       { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css' }
     ],
     script: [
@@ -78,7 +79,7 @@ export default {
 
   optimizedImages: {
     optimizeImages: true,
-    optimizeImagesInDev: true,
+    // optimizeImagesInDev: true,
   },
 
   storybook: {
